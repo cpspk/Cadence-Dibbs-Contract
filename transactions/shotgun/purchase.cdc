@@ -3,14 +3,14 @@ import FlowToken from "./contracts/FlowToken.cdc"
 import IFractionToken from "./contracts/IFractionToken.cdc"
 import Shotgun from "./contracts/Shotgun.cdc"
 
-transaction(auctionID: UInt64, flowAmount: UFix64, seller: Address) {
+transaction(auctionID: UInt64, flowAmount: UFix64, starter: Address) {
     let flowTokenReceiver: Capability<&FlowToken.Vault{FungibleToken.Receiver}>
 
     let vaultReceiverPublicPath: PublicPath?
     let vaultReceiverPublicPathPrefix: String
 
     prepare(buyer: AuthAccount) {
-        let auction = getAccount(seller).getCapability<&{Shotgun.AuctionPublic}>(Shotgun.ShotgunPublicPath).borrow()
+        let auction = getAccount(starter).getCapability<&{Shotgun.AuctionPublic}>(Shotgun.ShotgunPublicPath).borrow()
             ?? panic("Couldn't borrow a reference to the Auction Collection")
 
         let itemRef = auction.borrowShotgunItem(id: auctionID)

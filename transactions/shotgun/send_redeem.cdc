@@ -2,12 +2,12 @@ import FungibleToken from "./contracts/FungibleToken.cdc"
 import IFractionToken from "./contracts/IFractionToken.cdc"
 import Shotgun from "./contracts/Shotgun.cdc"
 
-transaction(auctionID: UInt64, fractionAmount: UInt64, seller: Address) {
+transaction(auctionID: UInt64, fractionAmount: UInt64, starter: Address) {
     let vaultStoragePath: StoragePath?
     let vaultStoragePathPrefix: String
 
     prepare(signer: AuthAccount) {
-		let auction = getAccount(seller).getCapability<&{Shotgun.AuctionPublic}>(Shotgun.ShotgunPublicPath).borrow()
+		let auction = getAccount(starter).getCapability<&{Shotgun.AuctionPublic}>(Shotgun.ShotgunPublicPath).borrow()
             ?? panic("Couldn't borrow a reference to the Auction Collection")
 
         let itemRef = auction.borrowShotgunItem(id: auctionID)
