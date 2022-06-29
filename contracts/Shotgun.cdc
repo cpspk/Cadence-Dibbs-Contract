@@ -18,6 +18,7 @@ pub contract Shotgun {
     pub let AuctionDuration: UFix64
     pub let ShotgunStoragePath: StoragePath
     pub let ShotgunPublicPath: PublicPath
+    pub var auctionId: {UInt64: UInt64}
 
     pub event NewAuctionStarted(starter:Address, auctionID: UInt64, tokenID: UInt64, flowAmount: UFix64, fractionAmount: UInt64)
     pub event Purchased(auctionID: UInt64, flowAmount: UFix64)
@@ -279,6 +280,7 @@ pub contract Shotgun {
             destroy oldItem
 
             Shotgun.totalAuctions = Shotgun.totalAuctions + UInt64(1)
+            Shotgun.auctionId.insert(key: tokenID, id)
             emit NewAuctionStarted(starter: starterAddr, auctionID: id, tokenID: tokenID, flowAmount: starterFlowBalance, fractionAmount: starterFractionBalance)
         }
 
@@ -296,8 +298,9 @@ pub contract Shotgun {
         self.totalAuctions = UInt64(0)
         self.TotalFractionBalace = UInt64(10_000_000_000_000_000)
         self.HalfFractionBalance = UInt64(5_000_000_000_000_000)
-        self.AuctionDuration = UFix64(1800)
+        self.AuctionDuration = UFix64(300)
         self.ShotgunStoragePath = /storage/ShotgunAuction
         self.ShotgunPublicPath = /public/ShotgunAuction
+        self.auctionId <- {}
     }   
 }
