@@ -58,15 +58,15 @@
     },
     "alice": {
       "address": "01cf0e2f2f715450",
-      "keys": "f9ffaa0965013c719eb6aec12d7b44ab75a70bcf871790a7b1b263263433683a"
+      "keys": "568ae8b58e611018247442f6a659fc86ea35b3031f53c476a7d047ba5f51d0d1"
     },
     "bob": {
       "address": "179b6b1cb6755e31",
-      "keys": "291af06c50064549f530aed9dbbc37663023a139432da8ee47503b752732f0fc"
+      "keys": "bd97b14b8c6d940b04d866420aee0b199de27e4650116eb7072b51bcbda230e3"
     },
     "carl": {
       "address": "f3fcd2c1a78f5eee",
-      "keys": "39dda11b5f071e76c464f13563c95f99986c4b48e6b2d034f7cf10ca6a1dc752"
+      "keys": "42b42f0c276148473cdc844d0205cc46d7b20dfd1fe04f378b88f1e424f6138c"
     }
   },
   "deployments": {

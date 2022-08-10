@@ -298,9 +298,9 @@ pub contract Shotgun {
         self.totalAuctions = UInt64(0)
         self.TotalFractionBalace = UInt64(10_000_000_000_000_000)
         self.HalfFractionBalance = UInt64(5_000_000_000_000_000)
-        self.AuctionDuration = UFix64(300)
+        self.AuctionDuration = UFix64(600)
         self.ShotgunStoragePath = /storage/ShotgunAuction
         self.ShotgunPublicPath = /public/ShotgunAuction
-        self.auctionId <- {}
+        self.auctionId = {}
     }   
 }
